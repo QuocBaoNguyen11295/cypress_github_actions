@@ -1,0 +1,27 @@
+{
+  "name": "cypress_github_actions",
+  "version": "1.0.0",
+  "description": "Cypress with github actions",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuocBaoNguyen11295/cypress_github_actions.git"
+  },
+  "keywords": [
+    "js",
+    "github_action",
+    "cypress"
+  ],
+  "author": "Quoc Bao Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/QuocBaoNguyen11295/cypress_github_actions/issues"
+  },
+  "homepage": "https://github.com/QuocBaoNguyen11295/cypress_github_actions#readme",
+  "devDependencies": {
+    "cypress": "^13.7.2"
+  }
+}
