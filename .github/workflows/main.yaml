@@ -13,5 +13,4 @@ jobs:
       - name: Cypress UI Testing
         uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run
-          browser: chrome
+          command: npx cypress run --browser chrome
