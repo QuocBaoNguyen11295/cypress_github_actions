@@ -4,7 +4,7 @@ describe('Login application', () => {
         cy.xpath_click('//button[normalize-space(.)="Signin"]')
     })
     it('Login successfully', () => {
-        cy.fill_login_info('username', 'password1')
+        cy.fill_login_info('username', 'password')
         cy.xpath_click(`//*[@type='submit']`)
         cy.open_page()
         cy.xpath_assert_text(`//*[@id='settingsBox']//i[@class='icon-user']//ancestor::a[@class='dropdown-toggle']`, 'username')
