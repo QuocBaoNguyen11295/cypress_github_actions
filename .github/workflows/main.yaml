@@ -14,3 +14,16 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           command: npx cypress run --browser chrome
+      - name: Check if tests failed
+        run: |
+          if [ -f "cypress/screenshots/*.png" ]; then
+            echo "Tests failed. Creating artifact..."
+            mv cypress/screenshots/*.png failed_tests_screenshots/
+          fi
+      # Upload the screenshots as artifacts if tests failed
+      - name: Upload Artifacts
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: failed_tests_screenshots
+          path: failed_tests_screenshots/
