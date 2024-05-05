@@ -17,13 +17,16 @@ jobs:
       - name: Check if tests failed
         run: |
           if [ -f "cypress/screenshots/*.png" ]; then
-            echo "Tests failed. Creating artifact..."
-            mv cypress/screenshots/*.png failed_tests_screenshots/
+            echo "Tests failed. Creating Mochawesome report..."
+            npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
+            npx mochawesome-merge cypress/reports/mocha/*.json > merged-report.json
+            npx mochawesome-report-generator merged-report.json --reportDir cypress/reports/mochawesome
           fi
-      # Upload the screenshots as artifacts if tests failed
-      - name: Upload Artifacts
+
+      # Upload the Mochawesome report as artifact if tests failed
+      - name: Upload Mochawesome Report
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: failed_tests_screenshots
-          path: failed_tests_screenshots/
+          name: mochawesome_report
+          path: cypress/reports/html/
