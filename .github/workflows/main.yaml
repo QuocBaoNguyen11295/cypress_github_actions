@@ -14,7 +14,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           command: npx cypress run --browser chrome
-      - name: Check if tests failed
+      - name: Create a mochawesome report
         run: |
           if [ -f "cypress/screenshots/*.png" ]; then
             echo "Tests failed. Creating Mochawesome report..."
@@ -26,7 +26,7 @@ jobs:
       # Upload the Mochawesome report as artifact if tests failed
       - name: Upload Mochawesome Report
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: mochawesome_report
           path: cypress/reports/html/
