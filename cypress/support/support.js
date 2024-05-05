@@ -16,3 +16,11 @@ Cypress.Commands.add('xpath_existing_tag', (locator) => {
 Cypress.Commands.add('check_url', (value) => {
     cy.url().should('contain', value.toString())
 })
+
+Cypress.Commands.add('find_keyword', (value) => {
+    cy.xpath(`//h2//following-sibling::ul//*[contains(text(),'${value.toString()}')]`).its('length').should('be.gt', 0)
+})
+
+Cypress.Commands.add('press_button', (value) => {
+    cy.get('input').type(`{${value.toString()}}`);
+})
